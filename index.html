@@ -199,23 +199,24 @@
     }
 
    function resetIntro() {
-  const isScrollVisible = scrollContainer.classList.contains("visible");
+  const isInScroll = logo.getAttribute("data-mode") === "scroll";
 
-  if (isScrollVisible) {
-    // ⬅️ Retour au cercle
+  if (isInScroll) {
+    // Retour au cercle
     circle.classList.remove("hidden");
     scrollContainer.classList.remove("visible");
     logo.classList.remove("fixed");
-    currentIndex = 0; // Reset le menu
-    renderMenu();
+    logo.setAttribute("data-mode", "circle");
   } else {
-    // ➡️ Aller au scroll menu
+    // Aller au scroll menu
     circle.classList.add("hidden");
     scrollContainer.classList.add("visible");
     logo.classList.add("fixed");
+    logo.setAttribute("data-mode", "scroll");
     renderMenu();
   }
 }
+
 
 
     let lastScrollTime = 0;
@@ -225,10 +226,12 @@
       lastScrollTime = now;
 
       if (!scrollContainer.classList.contains("visible")) {
-        circle.classList.add("hidden");
-        scrollContainer.classList.add("visible");
-        logo.classList.add("fixed");
-      }
+  circle.classList.add("hidden");
+  scrollContainer.classList.add("visible");
+  logo.classList.add("fixed");
+  logo.setAttribute("data-mode", "scroll"); // Ajout ici !
+}
+
 
       if (e.deltaY > 0) {
         currentIndex = (currentIndex + 1) % labels.length;
