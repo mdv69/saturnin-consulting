@@ -199,19 +199,24 @@
     }
 
    function resetIntro() {
-  if (circle.classList.contains("hidden")) {
-    // On est dans le scroll menu → retour au cercle
+  const isScrollVisible = scrollContainer.classList.contains("visible");
+
+  if (isScrollVisible) {
+    // ⬅️ Retour au cercle
     circle.classList.remove("hidden");
     scrollContainer.classList.remove("visible");
     logo.classList.remove("fixed");
+    currentIndex = 0; // Reset le menu
+    renderMenu();
   } else {
-    // On est dans le cercle → aller au scroll menu
+    // ➡️ Aller au scroll menu
     circle.classList.add("hidden");
     scrollContainer.classList.add("visible");
     logo.classList.add("fixed");
     renderMenu();
   }
 }
+
 
     let lastScrollTime = 0;
     window.addEventListener("wheel", (e) => {
