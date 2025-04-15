@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saturnin Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background-color: #fdfcf9;
+      font-family: 'Gilda Display', serif;
+    }
+
+    .logo {
+      width: 120px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      transition: all 1s ease-in-out;
+      cursor: pointer;
+    }
+
+    .logo.fixed {
+      position: fixed;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+    }
+
+    .circle-text {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .circle-text.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    text {
+      fill: #0047ff;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+
+    .scroll-container {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .scroll-container.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-item {
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #0047ff;
+      opacity: 0.3;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .menu-item.middle {
+      font-size: 28px;
+      color: #0022aa;
+      opacity: 1;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #0047ff;
+      padding: 20px;
+      z-index: 999;
+      display: none;
+      max-width: 300px;
+      backdrop-filter: blur(8px);
+    }
+
+    .popup.show {
+      display: block;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #0047ff;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Logo" class="logo" id="logo" onclick="resetIntro()" />
+
+  <div class="circle-text" id="circle">
+    <svg viewBox="0 0 400 400">
+      <defs>
+        <path id="circlePath" d="M200,200 m-150,0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
+      </defs>
+      <text>
+        <textPath href="#circlePath" startOffset="0" id="circleContent">
+          saturnin consulting and branding • saturnin consulting and branding •
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="scroll-container" id="menuContainer">
+    <div class="menu" id="menu"></div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-close" onclick="closePopup()">×</div>
+    <div id="popupContent">Content goes here</div>
+  </div>
+
+  <script>
+    const circleContent = document.getElementById('circleContent');
+    const logo = document.getElementById('logo');
+    const circle = document.getElementById('circle');
+    const scrollContainer = document.getElementById('menuContainer');
+    const menu = document.getElementById('menu');
+
+    const labels = [
+      "Contact", "AI & Innovation", "Social Medias", "Storytelling",
+      "Identity", "(Re)Branding", "Portfolio", "Who We Are", "Hospitality"
+    ];
+    let currentIndex = 0;
+
+    function rotateCircle() {
+      let offset = 0;
+      function step() {
+        offset += 0.05;
+        if (offset > 100) offset = 0;
+        circleContent.setAttribute('startOffset', offset + '%');
+        requestAnimationFrame(step);
+      }
+      step();
+    }
+
+    function renderMenu() {
+      menu.innerHTML = '';
+      for (let i = -3; i <= 3; i++) {
+        const item = document.createElement("div");
+        const label = labels[(currentIndex + i + labels.length) % labels.length];
+        item.className = "menu-item";
+        if (i === 0) item.classList.add("middle");
+        item.textContent = label;
+        item.onclick = () => showPopup(label);
+        menu.appendChild(item);
+      }
+    }
+
+    function showPopup(label) {
+      document.getElementById("popup").classList.add("show");
+      document.getElementById("popupContent").innerText = label + " - popup content coming soon!";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").classList.remove("show");
+    }
+
+    function resetIntro() {
+      circle.classList.remove("hidden");
+      scrollContainer.classList.remove("visible");
+      logo.classList.remove("fixed");
+    }
+
+    let lastScrollTime = 0;
+    window.addEventListener("wheel", (e) => {
+      const now = Date.now();
+      if (now - lastScrollTime < 200) return;
+      lastScrollTime = now;
+
+      if (!scrollContainer.classList.contains("visible")) {
+        circle.classList.add("hidden");
+        scrollContainer.classList.add("visible");
+        logo.classList.add("fixed");
+      }
+
+      if (e.deltaY > 0) {
+        currentIndex = (currentIndex + 1) % labels.length;
+      } else {
+        currentIndex = (currentIndex - 1 + labels.length) % labels.length;
+      }
+      renderMenu();
+    });
+
+    renderMenu();
+    rotateCircle();
+  </script>
+</body>
+</html>
