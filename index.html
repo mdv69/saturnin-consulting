@@ -199,12 +199,19 @@
     }
 
     function resetIntro() {
-      circle.classList.add("hidden");
-      scrollContainer.classList.add("visible");
-      logo.classList.add("fixed");
-      renderMenu();
-    }
-
+  if (scrollContainer.classList.contains("visible")) {
+    // Revenir au cercle
+    circle.classList.remove("hidden");
+    scrollContainer.classList.remove("visible");
+    logo.classList.remove("fixed");
+  } else {
+    // Aller au scroll menu
+    circle.classList.add("hidden");
+    scrollContainer.classList.add("visible");
+    logo.classList.add("fixed");
+    renderMenu();
+  }
+}
     let lastScrollTime = 0;
     window.addEventListener("wheel", (e) => {
       const now = Date.now();
