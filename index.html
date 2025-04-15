@@ -199,13 +199,13 @@
     }
 
    function resetIntro() {
-  if (scrollContainer.classList.contains("visible")) {
-    // 🔁 Revenir au cercle
+  if (circle.classList.contains("hidden")) {
+    // On est dans le scroll menu → retour au cercle
     circle.classList.remove("hidden");
     scrollContainer.classList.remove("visible");
     logo.classList.remove("fixed");
   } else {
-    // ⏩ Aller au scroll menu
+    // On est dans le cercle → aller au scroll menu
     circle.classList.add("hidden");
     scrollContainer.classList.add("visible");
     logo.classList.add("fixed");
