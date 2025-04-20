@@ -172,13 +172,17 @@
     logo.setAttribute("data-mode", "circle");
 
     function rotateCircle() {
-      let offset = 0;
-function step() {
-  offset += 0.05; // ou 0.02 pour plus de douceur
-  circleContent.setAttribute('startOffset', offset + '%');
-  requestAnimationFrame(step);
+  let offset = 0;
+
+  function step() {
+    offset += 0.05; // ou 0.02 pour plus lent
+    circleContent.setAttribute('startOffset', `${offset}%`);
+    requestAnimationFrame(step);
+  }
+
+  step(); // on lance la rotation
 }
-step();
+
 
 
     function renderMenu() {
