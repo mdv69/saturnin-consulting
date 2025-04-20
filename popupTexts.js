@@ -9,7 +9,7 @@ To slow down. To listen. To explore together what your brand could become.
 
 No forms. No formulas. Just you, and us.  
 Let’s shape your vision in a way the world hasn’t seen before.  
-Because you’re not like the others — and that’s where everything starts.`,
+Because you’re not like the others, and that’s where everything starts.`,
 
   "AI & Innovation": `We do not believe in technology for technology’s sake.  
 We believe in elegance, in frictionless systems,  
@@ -31,7 +31,7 @@ From chaos. From repetition. Into brilliance.`,
 
 In a sea of content, we believe in pause.  
 A visual that breathes. A sentence that cuts through.  
-A brand that doesn’t scream — it resonates.
+A brand that doesn’t scream, it resonates.
 
 We craft content that makes people feel before they scroll.  
 That enters the heart before the algorithm.
@@ -55,7 +55,7 @@ It seduces.
 It speaks softly but lingers long.
 
 Because when your story is told right,  
-your audience doesn’t just listen —  
+your audience doesn’t just listen,  
 they recognize themselves inside it.`,
 
   "Identity": `You are not a logo.  
@@ -64,18 +64,17 @@ You are not a trend.
 
 You are a frequency. A presence. A tension between silence and signature.
 
-At Saturnin, we craft identities that are not designed —  
-they are discovered.
+At Saturnin, we craft identities that are not designed, they are discovered.
 
-The right identity doesn’t look right — it feels inevitable.  
+The right identity doesn’t look right, it feels inevitable.  
 Like it was always supposed to be there.
 
 Through textures, tones, language, and motion,  
 we build identities that make your audience feel  
-something they can’t quite explain —  
+something they can’t quite explain,  
 but will never forget.`,
 
-  "(Re)Branding": `Sometimes, brands don’t need to change — they need to remember.
+  "(Re)Branding": `Sometimes, brands don’t need to change, they need to remember.
 
 Rebranding isn’t about being modern.  
 It’s about being true.
@@ -138,6 +137,5 @@ The feeling of belonging before the food arrives.
 
 Hospitality is not service.  
 It is seduction, silence, and atmosphere.  
-And your space doesn’t need another style —  
-It needs a soul.`
+And your space doesn’t need another style, It needs a soul.`
 };
