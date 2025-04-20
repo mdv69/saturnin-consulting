@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +47,21 @@
     .circle-text.hidden {
       opacity: 0;
       pointer-events: none;
+    }
+
+    .rotating-text {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: rotate 30s linear infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     text {
@@ -132,21 +146,21 @@
   <img src="logo.png" alt="Logo" class="logo" id="logo" onclick="resetIntro()" />
 
   <div class="circle-text" id="circle">
-    <svg viewBox="0 0 400 400">
-      <defs>
-        <path id="circlePath" d="M200,200 m-150,0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
-      </defs>
-      <text>
-        <textPath href="#circlePath" startOffset="0" id="circleContent">
-  SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES • 
-  SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES • 
-  SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES • 
-  SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES • 
-  SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES • 
-  SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES • 
-        </textPath>
-      </text>
-    </svg>
+    <div class="rotating-text">
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <path id="circlePath" d="M200,200 m-150,0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0" />
+        </defs>
+        <text>
+          <textPath href="#circlePath" id="circleContent">
+            • SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES
+            • SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES
+            • SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES
+            • SATURNIN — WE DON’T DESIGN BRANDS, WE CRAFT ATMOSPHERES
+          </textPath>
+        </text>
+      </svg>
+    </div>
   </div>
 
   <div class="scroll-container" id="menuContainer">
@@ -159,10 +173,7 @@
   </div>
 
   <script src="popupTexts.js"></script>
-
-
   <script>
-    const circleContent = document.getElementById('circleContent');
     const logo = document.getElementById('logo');
     const circle = document.getElementById('circle');
     const scrollContainer = document.getElementById('menuContainer');
@@ -175,20 +186,6 @@
     let currentIndex = 0;
 
     logo.setAttribute("data-mode", "circle");
-
-    function rotateCircle() {
-  let offset = 0;
-
-  function step() {
-    offset += 0.05; // ou 0.02 pour plus lent
-circleContent.setAttribute('startOffset', `${offset}px`);
-    requestAnimationFrame(step);
-  }
-
-  step(); // on lance la rotation
-}
-
-
 
     function renderMenu() {
       menu.innerHTML = '';
@@ -204,38 +201,32 @@ circleContent.setAttribute('startOffset', `${offset}px`);
     }
 
     function showPopup(label) {
-  const popup = document.getElementById("popup");
-  const content = document.getElementById("popupContent");
-
-  content.innerText = popupTexts[label] || `${label} — content coming soon.`;
-  popup.classList.add("show");
-}
-
+      const popup = document.getElementById("popup");
+      const content = document.getElementById("popupContent");
+      content.innerText = popupTexts[label] || `${label} — content coming soon.`;
+      popup.classList.add("show");
+    }
 
     function closePopup() {
       document.getElementById("popup").classList.remove("show");
     }
 
-   function resetIntro() {
-  const isInScroll = logo.getAttribute("data-mode") === "scroll";
+    function resetIntro() {
+      const isInScroll = logo.getAttribute("data-mode") === "scroll";
 
-  if (isInScroll) {
-    // Retour au cercle
-    circle.classList.remove("hidden");
-    scrollContainer.classList.remove("visible");
-    logo.classList.remove("fixed");
-    logo.setAttribute("data-mode", "circle");
-  } else {
-    // Aller au scroll menu
-    circle.classList.add("hidden");
-    scrollContainer.classList.add("visible");
-    logo.classList.add("fixed");
-    logo.setAttribute("data-mode", "scroll");
-    renderMenu();
-  }
-}
-
-
+      if (isInScroll) {
+        circle.classList.remove("hidden");
+        scrollContainer.classList.remove("visible");
+        logo.classList.remove("fixed");
+        logo.setAttribute("data-mode", "circle");
+      } else {
+        circle.classList.add("hidden");
+        scrollContainer.classList.add("visible");
+        logo.classList.add("fixed");
+        logo.setAttribute("data-mode", "scroll");
+        renderMenu();
+      }
+    }
 
     let lastScrollTime = 0;
     window.addEventListener("wheel", (e) => {
@@ -244,12 +235,11 @@ circleContent.setAttribute('startOffset', `${offset}px`);
       lastScrollTime = now;
 
       if (!scrollContainer.classList.contains("visible")) {
-  circle.classList.add("hidden");
-  scrollContainer.classList.add("visible");
-  logo.classList.add("fixed");
-  logo.setAttribute("data-mode", "scroll"); // Ajout ici !
-}
-
+        circle.classList.add("hidden");
+        scrollContainer.classList.add("visible");
+        logo.classList.add("fixed");
+        logo.setAttribute("data-mode", "scroll");
+      }
 
       if (e.deltaY > 0) {
         currentIndex = (currentIndex + 1) % labels.length;
@@ -260,7 +250,6 @@ circleContent.setAttribute('startOffset', `${offset}px`);
     });
 
     renderMenu();
-    rotateCircle();
   </script>
 </body>
 </html>
