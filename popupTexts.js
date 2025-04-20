@@ -76,18 +76,27 @@ but will never forget.`,
 
   "(Re)Branding": `Sometimes, brands don’t need to change, they need to remember.
 
+Branding is not decoration.  
+It’s the moment where who you are becomes visible to the world.
+
+We build brands from the soul outward.  
+We design with essence, we name with emotion, we write with edge.
+
 Rebranding isn’t about being modern.  
-It’s about being true.
+It’s about being true.  
+It’s about knowing when to shed, and when to evolve.
 
 We help you strip the excess.  
 We rediscover your roots.  
-And then — we reimagine you with elegance, tension, and emotional precision.
+And then, we reimagine you with elegance, tension, and emotional precision.
 
 Your next chapter isn’t a pivot.  
-It’s a return to essence, written in today’s language.
+It’s a return to clarity, written in today’s language.
 
-Rebranding with Saturnin is not renovation.  
-It’s resurrection.  
+Branding with Saturnin is not decoration.  
+Rebranding is not renovation.  
+It’s resurrection.
+
 And the world will feel the shift.`,
 
   "Portfolio": `This is where ideas became form.
