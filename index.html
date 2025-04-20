@@ -195,9 +195,13 @@
     }
 
     function showPopup(label) {
-      document.getElementById("popup").classList.add("show");
-      document.getElementById("popupContent").innerText = label + " - popup content coming soon!";
-    }
+  const popup = document.getElementById("popup");
+  const content = document.getElementById("popupContent");
+
+  content.innerText = popupTexts[label] || `${label} — content coming soon.`;
+  popup.classList.add("show");
+}
+
 
     function closePopup() {
       document.getElementById("popup").classList.remove("show");
