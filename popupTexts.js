@@ -93,9 +93,8 @@ And then, we reimagine you with elegance, tension, and emotional precision.
 Your next chapter isn’t a pivot.  
 It’s a return to clarity, written in today’s language.
 
-Branding with Saturnin is not decoration.  
-Rebranding is not renovation.  
-It’s resurrection.
+The right identity doesn’t look right, it feels inevitable. 
+Like it was always supposed to be there.
 
 And the world will feel the shift.`,
 
