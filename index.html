@@ -115,25 +115,26 @@
 
    .popup {
   position: fixed;
-  top: 5%;
-  left: 5%;
-  width: 90vw; /* 90% de la largeur de la fenêtre */
-  height: 90vh; /* 90% de la hauteur de la fenêtre */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Pleine largeur */
+  height: 100vh; /* Pleine hauteur */
   background: #fdf6f1;
   border: 2px solid #1612d3;
   padding: 40px;
   z-index: 999;
   display: none;
-  overflow-y: auto; /* Scroll si le contenu dépasse */
+  overflow-y: auto;
   backdrop-filter: blur(8px);
   color: #1612d3;
-  border-radius: 12px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centrer le contenu verticalement */
-  align-items: center; /* Centrer le contenu horizontalement */
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
 }
+
 
 
     .popup.show {
