@@ -115,21 +115,26 @@
 
    .popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border: 2px solid #0047ff;
+  top: 5%;
+  left: 5%;
+  width: 90vw; /* 90% de la largeur de la fenêtre */
+  height: 90vh; /* 90% de la hauteur de la fenêtre */
+  background: #fdf6f1;
+  border: 2px solid #1612d3;
   padding: 40px;
   z-index: 999;
-  display: none;
-  width: 100vw;
-height: 100vh;
-border-radius: 0;
-  overflow-y: auto; /* Scroll vertical si nécessaire */
+  visibility: hidden; /* Cacher par défaut */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  overflow-y: auto; /* Scroll si besoin */
   backdrop-filter: blur(8px);
-  color: #0047ff;
-  border-radius: 12px; /* Coins arrondis optionnels */
+  color: #1612d3;
+  border-radius: 12px; /* Coins arrondis */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrer verticalement */
+  align-items: center; /* Centrer horizontalement */
+  box-sizing: border-box;
 }
 
 
